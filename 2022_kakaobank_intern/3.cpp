@@ -3,6 +3,7 @@
 #include <iostream>
 #include <queue>
 using namespace std;
+
 int solution(vector<int> rooms) {
 
     int MAX = rooms.size();
