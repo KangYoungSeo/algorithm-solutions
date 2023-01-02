@@ -47,7 +47,7 @@ int main() {
             }
         }
     }
-    
+
     cout << ((result == 9999999) ? -1 : result);
 
 	return 0;
