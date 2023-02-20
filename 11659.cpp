@@ -2,19 +2,15 @@
 #include <vector>
 using namespace std;
 
-void fast_io(void)
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-}
-
-
 int main() {
 
 
-	fast_io();
-	int N, M; cin >> N >> M;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N, M; 
+	cin >> N >> M;
 	vector<long> dp(N + 1);
 	dp[0] = 0;
 
@@ -26,9 +22,10 @@ int main() {
 	int sum = 0; 
 
 	while(M --> 0){
-		int i, j; cin >> i >> j;
+		int i, j; 
+		cin >> i >> j;
 
-		cout << dp[j] - dp[i-1] << endl;
+		cout << dp[j] - dp[i-1] << '\n';
 	}
 
 	return 0;
