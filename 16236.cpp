@@ -5,7 +5,13 @@
 
 using namespace std;
 
-int N, M;//int board[21][21]; // 얘가 필요 없을 수도?
+int N, M;
+
+int board[21][21];
+
+//아래, 오른쪽, 왼쪽, 위
+int dy[4] = {1,0,0,-1};
+int dx[4] = {0,1,-1,0};
 
 struct fish{
     
@@ -60,11 +66,49 @@ void eatFish(int idx){
 bool checkFishes(){
     
     int distance = 500;
-    vector<int> maxIdx;
+    int maxIdxY = -1;
+    int maxIdxX = -1;
     
     //각자 상어랑 가까운지 물고기확인
+
+    //상하 좌우 확인
+    //첫번째 = 아래, 두번째 = 오른쪽, 세번째 = 왼쪽, 마지막 = 위 가장 위에 있는 물고기, 
+    for(int i = 0; i < 4; i++){
+
+        int targetY = baby.Y + dy[i];
+        int targetX = baby.X + dx[i];
+
+        //상하좌우 움직이는 게 가능한 경우,
+        if(targetY < N && targetY >= 0 && targetX < N && targetX >= 0 ){
+            //상어를 먹을 수 있는 지 여부를 파악
+            //물고기가 없을 경우
+            if(board[targetY][targetX] == 0){
+                continue;
+            }
+            //물고기가 있지만 크기가 클 경우 skip
+            else if(board[targetY][targetX] > baby.size ){
+                continue;
+            }
+            else{
+                maxIdxY.push_back(targetY);
+                maxIdxX.push_back(targetX);
+            }
+        }
+
+    }
+
+    if(maxIdxX == -1) return false;
+
+    return true;
+
+
+
+    // 수정 수정.....
+    /*
     for(int i = 0; i < fishList.size() ; i++){
         
+
+        //기 상어는 1초에 상하좌우로 인접한 한 칸씩 이동
         //생선의 위치
         int fishY = fishList[i].Y;
         int fishX = fishList[i].X;
@@ -149,8 +193,7 @@ bool checkFishes(){
             eatFish(leftFinalIndex);
         }
     }
-    
-    return true;
+    */
 }
 
 
@@ -165,6 +208,7 @@ int main(){
         for(int j = 0; j < N; j++){
             
             cin >> temp;
+            board[i][j] = temp;
             
             //아기 상어의 위치일 경우, 초기화
             if(temp >= 9){
