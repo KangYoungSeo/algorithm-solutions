@@ -209,3 +209,148 @@ int main(){
 
   return 0;
 }
+
+/*#include <iostream>
+#include <vector>
+#include <stack>
+#include <tuple>
+
+using namespace std;
+
+//←, ↖, ↑, ↗, →, ↘, ↓, ↙ 이
+int dx[8] = {-1, -1, 0, 1, 1, 1, };
+int dy[8] = {0,-1, -1, -1, 0, 1, };
+
+int sx[4] = {0, -1, 0, 1};
+int sy[4] = {-1, 0, 1, 0};
+
+int fishCnt;
+int M, S;
+int sx, sy;
+
+vector<int> fishboard[4][4];
+int smellboard[4][4];
+
+vector<pair< pair<int,int>, int >> originFish;
+vector<pair<pair<int,int>, int>> addFish;
+
+
+void printFishboard(){
+    
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+            
+            for(int k = 0; k < fishboard[i][j].size(); k++){
+                cout << fishboard[i][j][k] << " ";
+            }
+            
+            cout << " ";
+        }
+        
+        cout << endl;
+    }
+}
+
+void moveShark(){
+    
+    stack<int> shark;
+    
+    for(int i = 0; i < shark.size() ; i++){
+        
+    }
+    
+}
+
+void removeSmell(){
+    
+    
+    
+}
+
+void moveFish(){
+    
+    //원래 있었던 물고기 복제 진행
+    for(int i = 0; i < originFish.size(); i++){
+        
+        int direction = originFish[i].second;
+        int moveX = originFish[i].first.first + dx[direction-1];
+        int moveY = originFish[i].first.second + dy[direction-1];
+        
+        //이동 가능 경우 확인
+        while( moveX > -1 && moveX < 4 && moveY > -1 && moveY < 4){
+            
+            //이동 할 수 없다면 45도 회전 & 이동
+            direction = (direction + 1) % 8;
+            
+            //좌표 재정비
+            moveX = originFish[i].first.first + dx[direction-1];
+            moveY = originFish[i].first.second + dy[direction-1];
+        }
+    
+        //board에 새기기
+        fishboard[moveX][moveY].push_back(direction);
+        
+        //debug
+        printFishboard();
+    }
+    
+    //기존 board에 있던 물고기 탐색
+    for(int i = 0; i < addFish.size(); i++){
+        
+        int direction = addFish[i].second;
+        int moveX = addFish[i].first.first + dx[direction-1];
+        int moveY = addFish[i].first.second + dy[direction-1];
+        
+        //이동 가능 경우 확인
+        while( moveX > -1 && moveX < 4 && moveY > -1 && moveY < 4){
+            
+            //이동 할 수 없다면 45도 회전 & 이동
+            direction = (direction + 1) % 8;
+            
+            //좌표 재정비
+            moveX = addFish[i].first.first + dx[direction-1];
+            moveY = addFish[i].first.second + dy[direction-1];
+        }
+    
+        //board에 새기기
+        fishboard[moveX][moveY].push_back(direction);
+        
+        //debug
+        printFishboard();
+    }
+}
+
+
+int main(){
+    
+    //첫째 줄에 물고기의 수 M, 상어가 마법을 연습한 횟수 S가 주어짐
+    cin >> M >> S; fishCnt = M;
+    
+    for(int i = 0; i < M; i++){
+        
+        int fx, fy, d; cin >> fx >> fy >> d; //(fx, fy) :  물고기 위치, d 방향
+        
+        //방향 : 8 이하의 자연수로 표현, 1부터 순서대로 ←, ↖, ↑, ↗, →, ↘, ↓, ↙ 이
+        originFish.push_back(make_pair(make_pair(fx,fy), d));
+    }
+    
+    cin >> sx >> sy; ////sx, sy : 상어의 위치
+    
+    
+    //상어 연습 시작
+    while(S-->0){
+        
+        moveFish();         //물고기 이동
+        
+        moveShark();        //상어 이동
+        
+        removeSmell();      //냄새 제거
+        
+    }
+    
+    //격자 위에 있는 물고기의 수가 항상 1,000,000 이하인 입력만 주어진다.
+    //S번의 연습을 마친 후 격자에 있는 물고기의 수를 출력
+    cout << fishCnt << endl;
+
+    return 0;
+}*/
