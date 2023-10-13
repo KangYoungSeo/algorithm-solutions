@@ -6,7 +6,7 @@ using namespace std;
 
 int N,M,K;
 
-// i번 파이어볼의 위치는 (ri, ci), 질량은 mi이고, 방향은 di, 속력은 si이다. 위치 (r, c)는 r행 c열을 의미
+
 
 vector<int> board[2500][2500];
 vector<int> map;
